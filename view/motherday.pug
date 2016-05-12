@@ -1,0 +1,209 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width initial-scale=1.0 maximum-scale=1.0 minimum-scale=1.0 user-scalable=no')
+    // initial-scale=1.0 maximum-scale=1.0 minimum-scale=1.0
+    title #{title}
+    style.
+      /*根容器 采用列方向布局*/
+      * {
+      margin:0;
+      padding:0;
+      overflow-x: hidden;
+      }
+      .box{
+      border: 1px solid red;
+      min-height: 100vh;
+      width: 100vw;
+      font-family: Microsoft Yahei,SimSun,"Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 62.5%;
+      color:#FFF;
+      background-color: #000;
+      }
+      /*内容部分 充满，继续列布局，图片作为背景，弹性布局无法拖动*/
+      .content {
+      width: 100vw;
+      border: 1px solid red;
+      }
+      .img {
+      position: relative;
+      width: 100vw;
+      left:0;
+      top:0;
+      }
+      /*底部*/
+      footer {
+      width: 100vw;
+      }
+      /*标题 置顶左对齐*/
+      .txTitle {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      /*margin: 20px;*/
+      padding: 0 5px 0 5px;
+      font-size: 1.8rem;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid blue;
+      min-height: 2.5rem; /*不设置 高度为 0，原因不明！*/
+      }
+      /*正文用层包起来，方便拖动，列布局，横向充满*/
+      .dvTxt {
+      position: absolute;
+      left: 50px;
+      top: 100px;
+      min-height: 6.5rem; /*不设置高度为0，height 无效，原因不明*/
+      border: 1px solid red;
+      /*width: 20rem;*/
+      /*padding-bottom: 10px;*/
+      padding-right: 5px;
+      }
+      /*正文文字，设置了半透明*/
+      .txBody {
+      position: relative;
+      display: block;
+      /*display: inline-block;*/
+      width: 100%;
+      font-size: 1rem;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0 5px 0 5px;
+      }
+      /*签名部分，文字右对齐*/
+      .txSign {
+      position: relative;
+      display: block;
+      /*display: inline-block;*/
+      width: 100%;
+      font-size: 1rem;
+      background: rgba(0, 0, 0, 0.4);
+      text-align: right;
+      padding: 0 5px 0 5px;
+      }
+      /* 根据图片高度，抬高文本位置*/
+      .dvOffset {
+      border: 1px solid blue;
+      }
+      /*底部提示部分*/
+      .tip {
+      font-size: .9rem;
+      padding-top: 0px;
+      }
+      /*提交按钮 右对齐*/
+      .submit {
+      font-size: 1rem;
+      width: 10rem;
+      }
+  body.box
+    #dvContent.content
+      img.img(src='./img/meinv.jpg')
+      span#spTitle.txTitle 感恩母亲
+      #dvTxt.dvTxt
+        span.txBody 妈妈，谢谢你呵护我长大
+        span.txBody 不在你身边的日子里
+        span.txBody 一定要照顾好你自己
+        span.txSign 你的宝贝
+      #dvOffset.dvOffset
+    footer
+      span.tip *点击文字编辑、按住文字拖动、点击右下角图标生成感恩卡*
+      input.submit(type='button', value='生成感恩卡')
+    script(src='http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js')
+    // script src="http://nydl-10038118.file.myqcloud.com/js/jquery.min.js"></script
+    script.
+      /*
+      <span id='spTitle' class="txTitle">感恩母亲</span>
+      <div id="dvTxt" class="dvTxt">
+      <span class="txBody">妈妈，谢谢你呵护我长大</span>
+      <span class="txBody">不在你身边的日子里</span>
+      <span class="txBody">一定要照顾好你自己</span>
+      <span class="txSign">喻华锋</span>
+      </div>
+      <div id="dvOffset" class="dvOffset"></div>
+      */
+      // 根据图片大小，调整文本位置
+      // 获得图片实际尺寸
+      var img = new Image();
+      //img.load();
+      // 图片原始宽高
+      var imgH = 0;
+      var imgW = 0;
+      // 放在 onLoad后面，否则有可能太快无法触发 onload事件！
+      // 或者增加完成判断
+      img.src = "./img/boby.jpg";
+      // img.src = "http://nydl-10038118.file.myqcloud.com/img/boby.jpg";
+      if (img.complete) {
+      psTxt(img.width, img.height);
+      } else {
+      img.onload = function () {
+      psTxt(img.width, img.height);
+      img.onload = null;
+      };
+      }
+      // 调整文字位置
+      function psTxt(w, h) {
+      //if (h < w) {
+      //  alert("请重新选择竖向图片！");
+      //  return window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx02da95761cb1c55e&redirect_uri=http://wx.bspet.cn/ngxwx_wechat/getInKNX&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+      //}
+      var dw = $("#dvContent").width();
+      var dh = $("#dvContent").height();
+      var sh = parseInt(dw * h / w);
+      var tip = 'img:' + w + '*' + h + '=' + w / h
+      + '/div:' + dw + '*' + dh + '=' + dw / dh
+      + '/sh:' + dh + '-' + sh + '=' + (dh - sh);
+      //alert( tip);
+      $(".tip").text('sh:' + dh + '-' + sh + '=' + (dh - sh));
+      // $("#dvTxt").offset({left:dw-200, top: sh - 100});
+      $("#dvTxt")[0].style.left = (dw- $("#dvTxt").width() - 10) + 'px';
+      $("#dvTxt")[0].style.top = (dh- $("#dvTxt").height() - 10) + 'px';
+      $('#dvOffset').css('min-height', dh - sh); // height 不行！！！
+      }
+      // 文本拖动
+      // 拖动起始位置
+      var _sp = {};
+      // 加载完毕后，添加事件监控
+      $(document).ready(function () {
+      // 标题拖动
+      $('#spTitle')[0].addEventListener('touchstart', touchstart, false);
+      $('#spTitle')[0].addEventListener('touchmove', touchmove, false);
+      $('#spTitle')[0].addEventListener('touchend', touchend, false);
+      // 正文拖动
+      $('#dvTxt')[0].addEventListener('touchstart', touchstart, false);
+      $('#dvTxt')[0].addEventListener('touchmove', touchmove, false);
+      $('#dvTxt')[0].addEventListener('touchend', touchend, false);
+      }
+      )
+      // 按压事件
+      function touchstart(ev) {
+      ev.preventDefault();
+      if (!ev.touches.length)
+      return;
+      //由于触屏的坐标是个数组，所以取出这个数组的第一个元素
+      var t = ev.touches[0] || ev.changedTouches[0];
+      //保存div和开始触屏时的坐标差
+      _sp = {
+      x: $(this).offset().left - t.clientX,
+      y: $(this).offset().top - t.clientY
+      };
+      //$(".tip").text(JSON.stringify(_sp));
+      }
+      // 拖动
+      function touchmove(ev) {
+      //阻止默认事件
+      ev.preventDefault();
+      //获取保触屏坐标的对象
+      if (!ev.touches.length)
+      return;
+      var tc = ev.touches[0] || ev.changedTouches[0];
+      //把div移动到初始计算的位置加上当前触屏位置
+      var p = {};
+      p.left = _sp.x + tc.clientX;
+      p.top = _sp.y + tc.clientY;
+      // 设置位置
+      $(this).offset(p);
+      //$(".tip").text( $(this).offset().left + ',' + $(this).offset().top + '/' + tc.clientX + ',' + tc.clientY);
+      }
+      // 拖动结束
+      function touchend(ev) {
+      }
+
