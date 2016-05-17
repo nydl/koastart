@@ -21,6 +21,7 @@
     "koa-pug": "^3.0.0-0",
     "koa-router": "^7.0.0",
     "koa-send": "^3.2.0",
+    "mongoose": "^4.4.17",
     "mysql": "^2.10.2",
     "nodemailer": "^2.3.0",
     "progress": "^1.1.8",
@@ -29,7 +30,8 @@
     "request": "^2.69.0",
     "sequelize": "^3.19.3",
     "uid-safe": "^2.0.0",
-    "umzug": "^1.9.0"
+    "umzug": "^1.9.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "babel-cli": "^6.8.0",

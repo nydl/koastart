@@ -4,7 +4,7 @@
  */
 
 import Router from 'koa-router';
-// import userRouter from './user';
+import userRouter from './user';
 
 // import {checkLogined} from '../logic/user';
 // import { upload } from './modules/stores';
@@ -23,7 +23,6 @@ rt.get('/', ctx => {
 });
 
 // 用户子路由处理
-// router.use('/user', userRouter.routes());
+rt.use('/user', userRouter.routes());
 
 export default rt;
-

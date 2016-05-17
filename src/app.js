@@ -27,7 +27,7 @@ const pug = new Pug({
 
 console.log('koa start on port 3000');
 
-// 加载路由中间件,处理路由匹配,路由无法匹配的,回到静态文件处理,静态文件找不到的,返回不存在错误!
+// 加载路由中间件,处理路由匹配,无法匹配的,回到静态文件处理,静态文件找不到的,返回不存在错误!
 app.use(router.routes());
 
 // app.use(() => Promise.reject(new StatusError(404, 'Invalid API')));
