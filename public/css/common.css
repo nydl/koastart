@@ -1,0 +1,27 @@
+
+
+/* banner */
+.banenr1{ width:100%; overflow:hidden;position:relative;}
+.banenr1 img{width:100%}
+.banenr1 ul li{width: 100%; position: relative;}
+.toumingkuang{width:100%; height:6vh; background-color:rgba(23,23,23,0.6); position:absolute; bottom:0; left:0}
+.toumingkuang .zhuangtai{color:#FFF; height:6vh; line-height:6vh; width:92%; margin:0 auto}
+
+
+/*pro-content*/
+.pro-top{width: 100%; background-color: #f6f6f6; border-top: 1px solid #d6d6d6; border-bottom: 1px solid #d6d6d6; padding: 5% 4%;}
+.pro-top .tit{color: #333333; font-size: 1em;}
+.pro-top .price{font-size: 1.2em; color: #fa5355;}
+.pro-top .price span{color: #333333; font-size: .6em; text-decoration: line-through;}
+.pro-bottom{width: 100%; background-color: #fff; border-bottom: 1px solid #d6d6d6;}
+.pro-bottom ul li{width: 33.333%; float: left; text-align: center; color: #666666; font-size: .8em; height: 3em; line-height: 3em;}
+.pro-bottom .shoucang{background: url(../img/xin.png)25% center no-repeat;}
+.pro-bottom .zixun{background: url(../img/icon17.png)12% center no-repeat; background-size: 14.5%;}
+
+
+/*personal*/
+.per-top{width: 100%; background-color: #f6f6f6;}
+.per-top .per-list{width: 92%; height: 3em; line-height:3em; border-bottom: 1px solid #e7e7e7; margin:0 auto}
+.per-list .per-list_left{float:left; color:#666666}
+.per-list .per-list_right p{ float:right; color:#fa5355}
+.per-list .per-list_right{ float:right; color:#666666}

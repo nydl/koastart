@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta charset="utf-8">
+  <title>订单详情</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <script src="http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="js/swipe.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/base.css"/>
+  <link rel="stylesheet" type="text/css" href="css/common.css"/>
+
+</head>
+<body class="shoucang">
+<div class="warp clearfix">
+  <!--header star-->
+  <div class="header2 clearfloat box-s" id="header">
+    <div class="left1 clearfloat fl">
+      <a href="#" class="back"></a>
+    </div>
+    <div class="middle clearfloat fl">
+      已支付订单
+    </div>
+    <div class="right1 fr clearfloat">
+      <a href="#" class="back back1"></a>
+    </div>
+  </div>
+  <!--header end-->
+  <div id="main" class="clearfloat">
+    <!--banner star-->
+    <div class="banenr1" id="banner_box">
+      <ul>
+        <li class="dian">
+          <a href="#">
+            <img class="dis_block" src="upload/8.jpg">
+          </a>
+        </li>
+        <li class="dian">
+          <a href="#">
+            <img class="dis_block" src="upload/8.jpg">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="toumingkuang">
+      <div class="zhuangtai">已支付，已发货</div>
+    </div>
+  </div>
+
+
+  <!--banner end-->
+  <div class="pro-top clearfix box-s">
+    <p class="price">¥18.00&nbsp;<span>原价：¥39.00</span></p>
+    <p class="tit">红心火龙果（大果），两个只要18元</p>
+  </div>
+
+  <!--personal-->
+  <div class="per-top">
+    <div class="per-list">
+      <div class="per-list_left">商品详情</div>
+      <div class="per-list_right"><p>查看</p></div>
+    </div>
+  </div>
+  <div class="per-top">
+    <div class="per-list">
+      <div class="per-list_left">实付款</div>
+      <div class="per-list_right">￥18（含运费：￥0.00）</div>
+    </div>
+  </div>
+  <div class="per-top">
+    <div class="per-list">
+      <div class="per-list_left">送至</div>
+      <div class="per-list_right"><p>查看</p></div>
+    </div>
+  </div>
+  <div class="per-top">
+    <div class="per-list">
+      <div class="per-list_left">收货人</div>
+      <div class="per-list_right">喻华锋</div>
+    </div>
+  </div>
+  <div class="per-top">
+    <div class="per-list">
+      <div class="per-list_left">订单编号</div>
+      <div class="per-list_right">0512007</div>
+    </div>
+  </div>
+  <div class="per-top">
+    <div class="per-list">
+      <div class="per-list_left">下单时间</div>
+      <div class="per-list_right">20160512 17:11:10</div>
+    </div>
+  </div>
+
+
+  <!--footer star-->
+  <div class="footer footer1 clearfloat box-s" id="footer">
+    <ul>
+      <li class="list">
+        <a href="#">
+          <p class="icon31"></p>
+          <p class="tit">在线服务</p>
+        </a>
+      </li>
+
+      <li class="btn">
+        <input type="button" name="" id="btnShip" value="查看物流" class="gcar"/>
+      </li>
+      <li class="btn btn1">
+        <input type="button" name="" id="btnConfirm" value="确认收货" class="gcar gcar1"/>
+      </li>
+    </ul>
+  </div>
+  <!--footer end-->
+</div>
+<script>
+  $(function () {
+    new Swipe(document.getElementById('banner_box'), {
+      speed: 500,
+      auto: 3000,
+      callback: function () {
+        var lis = $(this.element).next("ol").children();
+        lis.removeClass("on").eq(this.index + 1).addClass("on");
+      }
+    });
+  });
+</script>
+<script type="text/javascript">
+  jQuery(".pro-tab").slide({delayTime: 0});
+</script>
+</body>
+</html>

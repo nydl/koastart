@@ -1,0 +1,68 @@
+﻿body,div,dl,dt,dd,ul,li,form,fieldset,th,td,input,select,textarea,option,button,p,abbr,address,artical,aside,b,bdo,blockquote,button,datalist,del,details,dialog,em,strong,dfn,code,samp,kbd,var,cite,footer,header,i,ins,legend,m,nav,q,section,time{margin:0;padding:0;font-size:16px; font-family: "微软雅黑";}
+fieldset,img,abbr,input{border:0} 
+em,i{ font-style:normal;} 
+ul,li{ list-style:none;} 
+a,button,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+body a{outline:none;blr:expression(this.onFocus=this.blur());}
+input,select,textarea,option,button{font-size:12px; font-weight:normal; outline: none;}
+body{font-size: 16px; background-color: #fff;}
+.shoucang{background-color: #f6f6f6;}
+img{width: 100%; cursor: pointer;}
+a{text-decoration:none; color:#7e7d84; -webkit-tap-highlight-color:rgba(0,0,0,0);}
+a:hover{ text-decoration:none;}
+textarea{reszie:none;}/*禁止改变大小*/
+.fl{float:left;display:inline;} 
+.fr{float:right;display:inline;}
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.clearfloat{zoom:1}
+.clear{clear:both;zoom:1;}
+.dis_block{ display:block;}
+body {
+	-webkit-transition: -webkit-transform 0.3s ease;
+	transition: transform 0.3s ease;
+}
+.box-s{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.warp{max-width: 640px; margin: 0 auto;}
+
+/*清楚苹果按钮样式*/
+input[type=”button”], input[type=”submit”], input[type=”reset”] {
+	-webkit-appearance: none;
+}
+
+#main{position: relative; z-index: 9;}
+
+/*header*/
+.header2{width: 100%; height: 3.5em; background-color: #f8f8f8; border-bottom: 1px solid #e9e9e9; padding: 0 5%; position: fixed; top: 0; left: 0; z-index: 99;}
+.header2 .left1,.header2 .right1{width: 20%; height: 3.5em;/* max-width: 56px;*/}
+.header2 .left1 .back{display: block; width: 100%; height: 3.5em; background: url(../img/back.png) center left no-repeat; background-size: 38%; max-width: 40px;}
+.header2 .middle{width: 60%; text-align: center; height: 3.5em; line-height: 3.5em;}
+.header2 .right1 .back1{display: block; width: 100%; height: 3.5em; background: url(../img/icon16.png)right center no-repeat; background-size: 40%; max-width: 56px; float: right;}
+
+/*footer*/
+.footer{width: 100%; height: 3em; z-index: 99; left: 0; bottom: 0; position: fixed; border-top: 1px solid #e9e9e9; background-color:#f8f8f8;}
+.footer ul li{width: 25%; float: left; text-align: center;}
+.footer ul li .tit{color: #4b4b4b; font-size: .75em;}
+.icon31{background: url(../img/icon17.png) center no-repeat; background-size: 55%; height: 1.9em; max-width: 40px; margin: 0 auto;}
+.footer2 ul li{width: 33.333%;}
+.footer1 .list{width: 44%;}
+.footer1 .btn{width: 24.343%; margin-left: 2%; font-size: 1em;}
+.footer1 .btn .gcar{width: 100%; height: 2.5em; line-height: 2.5em; background-color: #d9d9d9; color: #4d4d4d; border-radius: 5px; -webkit-border-radius: 5px; margin-top: .75em;}
+.footer1 .btn .gcar1{background-color: #fa5355; color: #fff;}
+.footer .cur .tit{color: #ea2979;}
+​
+
+
+
+
+
+
+
+
+
+
+

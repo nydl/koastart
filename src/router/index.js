@@ -4,7 +4,8 @@
  */
 
 import Router from 'koa-router';
-import userRouter from './user';
+import userRt from './user';
+import orderRt from './order';
 
 // import {checkLogined} from '../logic/user';
 // import { upload } from './modules/stores';
@@ -22,7 +23,9 @@ rt.get('/', ctx => {
   ctx.render('motherday', { titel: '感恩母亲' });
 });
 
-// 用户子路由处理
-rt.use('/user', userRouter.routes());
+// 用户子路由
+rt.use('/user', userRt.routes());
+// 订单子路由
+rt.use('/order', orderRt.routes());
 
 export default rt;

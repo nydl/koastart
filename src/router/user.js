@@ -5,12 +5,13 @@
 
 import Router from 'koa-router';
 //import user from '../base/user';
+const log = require('log4js').getLogger('route/user');
 
 const rt = new Router();
 
 rt.get('/reg', ctx => {
-  console.log('enter user/reg page.');
-  ctx.render('h1 你好, 欢迎进入#{route}页面!', { route: '用户注册' }, { fromString: true }, false);
+  log.warn('enter user/reg page.');
+  ctx.render('h1 Hello#{name}!', { name: 'user reg！' }, { fromString: true }, false);
 });
 
 export default rt;

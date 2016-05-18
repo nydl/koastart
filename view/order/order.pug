@@ -1,0 +1,99 @@
+doctype html
+html(lang='zh-Hans')
+  head
+    meta(name='renderer', content='webkit|ie-comp|ie-stand')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(charset='utf-8')
+    title 订单详情
+    meta(name='viewport', content='width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    meta(http-equiv='Cache-Control', content='no-siteapp')
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='mobile-web-app-capable', content='yes')
+    meta(name='format-detection', content='telephone=no')
+    meta(name='keywords', content='')
+    meta(name='description', content='')
+    script(src='http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js')
+    script(type='text/javascript', src='js/swipe.js')
+    link(rel='stylesheet', type='text/css', href='css/base.css')
+    link(rel='stylesheet', type='text/css', href='css/common.css')
+  body.shoucang
+    .warp.clearfix
+      // header star
+      #header.header2.clearfloat.box-s
+        .left1.clearfloat.fl
+          a.back(href='#')
+        .middle.clearfloat.fl
+          | #{status}
+        .right1.fr.clearfloat
+          a.back.back1(href='#')
+      // header end
+      #main.clearfloat
+        // banner star
+        #banner_box.banenr1
+          ul
+            li.dian
+              a(href='#')
+                img.dis_block(src='upload/8.jpg')
+            li.dian
+              a(href='#')
+                img.dis_block(src='upload/8.jpg')
+        .toumingkuang
+          .zhuangtai #{status}
+      // banner end
+      .pro-top.clearfix.box-s
+        p.price
+          | ¥18.00 
+          span 原价：¥39.00
+        p.tit $#{name}
+      // personal
+      .per-top
+        .per-list
+          .per-list_left 商品详情
+          .per-list_right
+            p 查看
+      .per-top
+        .per-list
+          .per-list_left 实付款
+          .per-list_right ￥#{price}（含运费：￥#{shipFee}）
+      .per-top
+        .per-list
+          .per-list_left 送至
+          .per-list_right
+            p 查看
+      .per-top
+        .per-list
+          .per-list_left 收货人
+          .per-list_right #{shipName}
+      .per-top
+        .per-list
+          .per-list_left 订单编号
+          .per-list_right #{no}
+      .per-top
+        .per-list
+          .per-list_left 下单时间
+          .per-list_right #{addTime}
+      // footer star
+      #footer.footer.footer1.clearfloat.box-s
+        ul
+          li.list
+            a(href='#')
+              p.icon31
+              p.tit 在线服务
+          li.btn
+            input#btnShip.gcar(type='button', name='', value='查看物流')
+          li.btn.btn1
+            input#btnConfirm.gcar.gcar1(type='button', name='', value='确认收货')
+      // footer end
+    script.
+      $(function () {
+        new Swipe(document.getElementById('banner_box'), {
+          speed: 500,
+          auto: 3000,
+          callback: function () {
+            var lis = $(this.element).next("ol").children();
+            lis.removeClass("on").eq(this.index + 1).addClass("on");
+          }
+        });
+      });
+    script(type='text/javascript').
+      jQuery(".pro-tab").slide({delayTime: 0});

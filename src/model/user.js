@@ -113,8 +113,9 @@ const userSchema = schema({
 // 通过 require db.conn 来返回指定的数据库 User 模型
 export default function userM(conn) {
   // 定义 model
-  mongoose.model('userM', userSchema);
-  return (conn || mongoose).model('userM');
+  mongoose.model('user', userSchema);
+  // 获取 model
+  return (conn || mongoose).model('user');
 }
 
 
@@ -123,9 +124,7 @@ export default function userM(conn) {
  */
 import conn from './db';
 function add(pid) {
-  // 定义 model
-  mongoose.model('user', userSchema);
-  const UserM = conn.model('user');
+  const UserM = userM(conn);
   /*
    //  var tm1 = new Date(Date.parse('2013-07-20 18:00:00'.replace(/-/g,   "/")));
    var tm2 = Date.parse('2013-07-21 17:00');
@@ -157,7 +156,7 @@ function add(pid) {
     name: 'test',
     showName: 'test',
     Sex: '男',
-    mobile: '13900000001',
+    mobile: '13900000002',
     unitNo: '0086.11112222',
     status: 1,
     upTime: new Date('2016/05/16 23:00:00'),
@@ -173,4 +172,4 @@ function add(pid) {
 /**
  * Test
  */
-add('88880003');
+add('88880004');
