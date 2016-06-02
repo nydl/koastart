@@ -34,7 +34,7 @@ const userSchema = schema({
   sex: String,      // 性别，男、女，企业、群组无
   password: String, // md5 编码
 
-  // 类别 0：待定，作为普通个人用户处理 1：普通个人 2：企业用户 3：群组，群组依附于会员存在 4：公众，包括 个人、媒体、企业等需社会化营销的用户
+  // 类别 0：个人 1：VIP 2：群组，群组依附于会员存在 3：订阅 4：公众，包括 个人、媒体、企业等需社会化营销的用户 5: 企业
   type: Number,     // 普通、企业 的分享，是否可向公众 转发、关注，从而产生粉丝，类似轻微博，粉丝只能看到用户通讯录之外的粉丝和关注，对通讯录进行保护
   verify: Boolean,  // 实名认证、验证，坐过飞机的，自动通过认证
   rating: Number,   // 等级  星级  可建立梦幻的、值得骄傲的，代表身份的等级制，包括 分享数量、粉丝数量、转发数量等
@@ -122,7 +122,7 @@ export default function userM(conn) {
 /**
  * Data generation
  */
-import conn from './db';
+// import conn from './db';
 function add(pid) {
   const UserM = userM(conn);
   /*
@@ -156,7 +156,7 @@ function add(pid) {
     name: 'test',
     showName: 'test',
     Sex: '男',
-    mobile: '13900000002',
+    mobile: '13900000003',
     unitNo: '0086.11112222',
     status: 1,
     upTime: new Date('2016/05/16 23:00:00'),
@@ -172,4 +172,4 @@ function add(pid) {
 /**
  * Test
  */
-add('88880004');
+// add('88880005');

@@ -6,10 +6,9 @@ const debug = require('debug')('koastart');
 import path from 'path';
 import cfg from '../config/app';
 import fs from 'fs';
-import log4js from 'log4js';
+const log4js = require('log4js');
 import StatusError from './utils/StatusError';
 import app from './app';
-
 
 /*
  * 创建日志目录
@@ -32,7 +31,7 @@ try {
 
 const log = log4js.getLogger('index');
 // 日志配置加载，每隔 300秒检查设置变更！
-log4js.configure('./config/log4js.json', { reloadSecs: 300 });
+log4js.configure('config/log4js.json', { reloadSecs: 300 });
 
 async function main() {
   const port = process.env.PORT || cfg.app.port;
@@ -48,4 +47,3 @@ async function main() {
 
 // 启动服务!
 main().catch(err => setImmediate(() => { throw err; }));
-

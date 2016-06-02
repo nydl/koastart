@@ -3,7 +3,7 @@
  * 应用基本参数
  */
 
-export default {
+module.exports = {
   app: {
     host: 'paiapp.com', // 域名 或 ip地址，登记时需要返回给登记者
     port: 3000, // 4502-4534  silverlight
@@ -16,9 +16,6 @@ export default {
     secret: '546gsfqwerqe4tgfghfghdfujtrt',
     expires: 1200, // 服务端session有效期，单位秒，空闲超时强制清除，客户端最好5分钟一次登记！超时20分钟不活动，判断为离线，个人聊天时无需精确状态消息，在close中不广播离线状态，在这里广播 离线状态？
     checktime: 60  // 多长时间 检查一次，单位秒
-  },
-  log: {
-    level: 'ALL' /* OFF FATAL ERROR WARN INFO DEBUG TRACE ALL */
   },
   // mongodb 数据库
   db: {

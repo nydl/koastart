@@ -4,7 +4,7 @@
  */
 
 import Router from 'koa-router';
-//import user from '../base/user';
+import User from '../base/user';
 const log = require('log4js').getLogger('route/user');
 
 const rt = new Router();
@@ -18,7 +18,39 @@ export default rt;
 
 // 用户页面
 // rt.get('/reg', reg);
-//rt.post('/api/reg', user.reg);
+
+rt.post('/api/reg', ctx => {
+  console.log(JSON.stringify(ctx.request.body));
+
+  const {name, pwd, type, mobile, nick, email, sex, unitNo, rid, from} = ctx.request.body;
+
+  const us = {
+    name, password: pwd, // md5
+    type: type || 1, mobile, status: 0  // 待定
+  };
+
+  if (nick)
+    us.nick = nick;
+
+  // 稀疏索引，不能 null、空，如果去掉，必须使用 unset！
+  if (email)
+    us.email = email;
+
+  if (sex)
+    us.sex = sex;
+
+  if (unitNo)
+    us.unitNo = unitNo;
+
+  if (rid)
+    us.rid = rid;
+
+  if (from)
+    us.from = from;
+
+  console.log(JSON.stringify(us));
+  User.reg(us);
+});
 
 /*
 rt.post('/reg', user.regrsp);

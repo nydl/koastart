@@ -3,7 +3,7 @@
  * 航空政策参数
  */
 
-export default {
+module.exports = {
   checksum: false, // 调试是用于判断上传的文件是否正确，运行稳定可关闭！
   maxSize: 10 * 1024 * 1024, // 上传最大文件大小，单位兆数，默认10兆，大约500万条政策数据
   allMax: 3000,  // 全新获取最大条数

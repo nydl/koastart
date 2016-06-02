@@ -3,7 +3,7 @@
  * 集成登录参数
  */
 
-export default {
+module.exports = {
   auth: {
     twitter: {
       consumerkey: 'yourConsumerKey',

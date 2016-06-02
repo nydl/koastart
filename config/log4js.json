@@ -1,29 +1,53 @@
 {
   "appenders": [
     {
-      "type": "clustered",
-      "appenders": [
-        {
-          "category": "http"
-          "type": "dateFile",
-          "filename": "log/access.log",
-          "pattern": "-yyyy-MM-dd",
-        },
-        {
-          "type": "file",
-          "filename": "log/all.log",
-          "maxLogSize": 10485760,
-          "numBackups": 3
-        },
-        {
-          "type": "logLevelFilter",
-          "level": "ERROR",
-          "appender": {
-            "type": "file",
-            "filename": "log/errors.log"
-          }
-        }
-      ]
+      "type":"console"
+    },
+    {
+      "type": "file",
+      "filename": "log/all.log",
+      "maxLogSize": 104857600,
+      "numBackups": 3
+    },
+    {
+      "type": "logLevelFilter",
+      "level": "ERROR",
+      "appender": {
+        "type": "file",
+        "filename": "log/err.log",
+        "maxLogSize": 104857600,
+        "numBackups": 3
+      }
+    },
+    {
+      "type": "logLevelFilter",
+      "level": "ERROR",
+      "appender": {
+        "type": "dateFile",
+        "filename": "log/err/err",
+        "alwaysIncludePattern": true,
+        "pattern": "-yyMMdd.log"
+      }
+    },
+    {
+      "type": "dateFile",
+      "filename": "log/hour/hour",
+      "alwaysIncludePattern": true,
+      "pattern": "-yyMMddhh.log"
+    },
+    {
+      "category": "http",
+      "type": "dateFile",
+      "filename": "log/http/http",
+      "alwaysIncludePattern": true,
+      "pattern": "-yyMMdd.log"
     }
-  ]
+  ],
+
+  "replaceConsole": true,
+  "levelOpt": "ALL TRACE DEBUG INFO WARN ERROR FATAL OFF",
+  "levels": {
+    "http": "ALL",
+    "[all]": "ALL"
+  }
 }

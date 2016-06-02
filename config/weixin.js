@@ -3,7 +3,7 @@
  * 微信参数
  */
 
-export default {
+module.exports = {
   token: 'nuoyadalu201511041709',
   appid: 'wx02da95761cb1c55e',
   appSecret: '88c8fcef1fd14ff3434c3122a4f0de35',
