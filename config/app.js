@@ -28,7 +28,12 @@ module.exports = {
     port: 6379, // 6379在是手机按键上MERZ对应的号码，而MERZ取自意大利歌女Alessia Merz的名字
     password: ''
   },
-  upfile: {
-    maxSize: 20 // 上传最大文件大小，单位兆数，默认10兆，大约500万条政策数据
+  log: {
+    level: 12
+  },
+  upload: {
+    url: '/upload',
+    dir: 'upload/',
+    maxSize: 10 // 上传最大文件大小，单位兆数，默认10兆，大约500万条政策数据
   }
 };

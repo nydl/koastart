@@ -7,7 +7,7 @@ import path from 'path';
 import cfg from '../config/app';
 import fs from 'fs';
 const log4js = require('log4js');
-import StatusError from './utils/StatusError';
+import StatusError from './utils/errcode';
 import app from './app';
 
 /*

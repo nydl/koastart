@@ -1,0 +1,566 @@
+/*!
+ * editTable - editTable.js
+ * @version v1.0.0
+ * @link 
+ * @license MIT
+ */
+.weui_uploader_hd {
+  padding-top: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+.weui_uploader_hd .weui_cell_ft {
+  font-size: 1em;
+}
+.weui_uploader_bd {
+  margin-bottom: -4px;
+  margin-right: -9px;
+  overflow: hidden;
+}
+.weui_uploader_files {
+  list-style: none;
+}
+.weui_uploader_file {
+  float: left;
+  margin-right: 9px;
+  margin-bottom: 9px;
+  width: 79px;
+  height: 79px;
+  background: no-repeat center center;
+  background-size: cover;
+}
+.weui_uploader_status {
+  position: relative;
+}
+.weui_uploader_status:before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.weui_uploader_status .weui_uploader_status_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #FFFFFF;
+}
+.weui_uploader_status .weui_icon_warn {
+  display: block;
+}
+.weui_uploader_input_wrp {
+  float: left;
+  position: relative;
+  margin-right: 9px;
+  margin-bottom: 9px;
+  width: 77px;
+  height: 77px;
+  border: 1px solid #D9D9D9;
+}
+.weui_uploader_input_wrp:before,
+.weui_uploader_input_wrp:after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #D9D9D9;
+}
+.weui_uploader_input_wrp:before {
+  width: 2px;
+  height: 39.5px;
+}
+.weui_uploader_input_wrp:after {
+  width: 39.5px;
+  height: 2px;
+}
+.weui_uploader_input_wrp:active {
+  border-color: #999999;
+}
+.weui_uploader_input_wrp:active:before,
+.weui_uploader_input_wrp:active:after {
+  background-color: #999999;
+}
+.weui_uploader_input {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.cropDiv {
+  /*
+  position: absolute;
+  display: none;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+  z-index: 9000;
+  */
+  background-color: black;
+}
+.cropImgDiv {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 5rem;
+  border-top: 2px dashed black;
+  border-bottom: 2px dashed black;
+}
+.cropImg {
+  width: 100%;
+  min-width: 100%;
+  margin-left: 0;
+  margin-top: 0;
+}
+.cropBtnDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  bottom: 6rem;
+  width: 100%;
+}
+.cropItem {
+  display: block;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 7px 0 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.cropIcon {
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+}
+.cropIcon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/*
+.postImgDiv {
+  width:100%;
+  height: 100%;
+  overflow: hidden;
+}
+*/
+.postImg {
+  width: 100%;
+  min-width: 100%;
+  margin-left: 0;
+  margin-top: 0;
+}
+.postHImg {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 20rem;
+}
+.postVImg {
+  width: 100%;
+  min-width: 100%;
+  margin-left: 0;
+  margin-top: 0;
+}
+.tbTitle {
+  color: #4b4b4b;
+  font-weight: bold;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #dce0e0;
+  /*#666;*/
+  white-space: nowrap;
+  text-align: center;
+  padding: 5px 0;
+}
+.orderTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #4b4b4b;
+  font-size: .9rem;
+  font-weight: bold;
+  text-align: left;
+  width: 100%;
+  position: relative;
+}
+.orderTitle span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.orderTitle img {
+  width: 60px;
+  height: 60px;
+  border: 2px solid white;
+  border-radius: 50%;
+  position: absolute;
+  right: -5px;
+  top: -38px;
+}
+.prodTitle {
+  display: block;
+  color: #4b4b4b;
+  font-size: .9rem;
+  font-weight: bold;
+  text-align: left;
+  width: 100%;
+  border: none;
+}
+.subTitle {
+  display: block;
+  color: #a7a7a7;
+  font-size: .7rem;
+  text-align: left;
+  width: 100%;
+  border: none;
+}
+.subTitle .subTitleV {
+  font-size: .6rem;
+}
+/*
+ * Edit Table, 类似 listView
+ * 编辑表的 class 请设置为 editTable
+ */
+/* 跟 listView  一致 */
+.editTable {
+  border-collapse: collapse;
+  border: none;
+  table-layout: fixed;
+  /*确保td 不被内容撑开*/
+  background: white;
+  width: 100%;
+  margin: 1rem 0 0 0;
+  color: #828282;
+  /* 跟 listView th 一致 */
+  /* 跟 listView odd tr 一致 */
+  /* mobile no use odd even!
+  .etRowOdd {
+    min-height: 2.2rem;
+    //background-color: lavender;
+    input, span {
+      min-height: 2.2rem;
+      //background: lavender;
+      padding: 5px 0.75rem;
+    }
+  }
+
+  .etRowEven {
+    min-height: 2.2rem;
+    //background-color: whitesmoke;
+    input, span {
+      min-height: 2.2rem;
+      //background: whitesmoke;
+      padding: 5px 0.75rem;
+    }
+  }
+  */
+  /* editTable 独有的，跟 行 底色一致,与TD类似 */
+  /* 对 input不起作用,对span起作用
+  .specN:after {
+    content: ':';
+    display: inline-block;
+  }
+  */
+  /* editTable编辑时的式样,有个虚线边框 */
+  /*编辑样式*/
+  /* 出入的图片样式,用于手机*/
+  /* editTable 独有，选择行，跟 鼠标移动时的 背景色一致 */
+  /* 行号,注意字体 */
+  /* 行号 鼠标 移动 变色*/
+  /*用于输入组件所在 层的外框*/
+}
+.editTable h1 {
+  color: #4b4b4b;
+  font-size: .9rem;
+  font-weight: 400;
+  margin-bottom: .75rem;
+}
+.editTable h2 {
+  color: #4b4b4b;
+  font-size: .85rem;
+  font-weight: 400;
+  margin-bottom: .3rem;
+}
+.editTable h3 {
+  color: #4b4b4b;
+  font-size: .8rem;
+  font-weight: 400;
+}
+.editTable p {
+  margin: 10px 0;
+}
+.editTable th {
+  color: #4b4b4b;
+  font-weight: bold;
+  font-size: 0.85rem;
+  padding: 4px 5px 2px;
+  border-bottom: 1px solid #dce0e0;
+  /*#666;*/
+  background-color: white;
+  white-space: nowrap;
+  text-align: center;
+  /*text-align: left;*/
+  height: 1rem;
+}
+.editTable .imgTitle {
+  color: #4b4b4b;
+  font-size: .85rem;
+  font-weight: bold;
+  text-align: center;
+}
+.editTable tbody {
+  background-color: white;
+}
+.editTable tr {
+  min-height: 2.2rem;
+}
+.editTable tr input,
+.editTable tr span {
+  min-height: 2.2rem;
+  padding: 10px 0 10px 0.75rem;
+}
+.editTable td {
+  border: none;
+  border-collapse: collapse;
+  vertical-align: top;
+}
+.editTable input {
+  border: none;
+  vertical-align: bottom;
+  padding: 2px;
+  cursor: pointer;
+  /*height: 22px;*/
+  width: 100%;
+}
+.editTable .specN {
+  color: #4b4b4b;
+}
+.editTable .specV {
+  color: #4b4b4b;
+}
+.editTable span {
+  display: block;
+  text-align: left;
+  word-break: break-all;
+  width: 100%;
+  height: 100%;
+  -webkit-user-modify: read-write-plaintext-only;
+  padding: 0;
+  background: white;
+}
+.editTable textarea {
+  background: white;
+  padding: 3px;
+  width: 100%;
+  /*100%-10px会撑开页面超出10px*/
+  height: 1rem;
+  text-align: left;
+}
+.editTable .etCellEdit {
+  border: 1px dotted black !important;
+  /*height: 22px;*/
+  color: #4b4b4b;
+}
+.editTable .etCellView {
+  color: #4b4b4b;
+}
+.editTable .etEdit {
+  text-align: left !important;
+  padding: 5px;
+  /*5px 0px 3px;*/
+  /*height: 100px;*/
+  width: 100%;
+  word-break: break-all;
+}
+.editTable .etImg {
+  padding: 0;
+  width: 100%;
+  height: auto;
+}
+.editTable .etRowSelOdd,
+.editTable .etRowSelEven {
+  background: LightSteelBlue;
+}
+.editTable .etRowSelOdd input,
+.editTable .etRowSelEven input,
+.editTable .etRowSelOdd span,
+.editTable .etRowSelEven span {
+  background: LightSteelBlue;
+}
+.editTable .etCellSel {
+  background: White;
+  cursor: pointer;
+  color: Navy;
+}
+.editTable .etCellSelMouseOver {
+  background: LightSteelBlue;
+  cursor: pointer;
+}
+.editTable .etInputBox {
+  position: absolute;
+  border: 1px solid #7F9DB9;
+  width: 182px;
+  height: 100px;
+  overflow: hidden;
+}
+.editTable .etInputSel {
+  position: relative;
+  margin: -3px;
+  width: 500px;
+  height: 500px;
+  line-height: 14px;
+  /*color:#909993;*/
+}
+.etBorder td {
+  border-bottom: 1px solid #cccccc;
+}
+.prodView {
+  font-size: .65rem;
+}
+.prodView .specVTable {
+  /* 跟 listView odd tr 一致 */
+}
+.prodView .specVTable tr {
+  min-height: 1.3rem;
+}
+.prodView .specVTable tr input,
+.prodView .specVTable tr span {
+  min-height: 1.3rem;
+  padding: 5px 2px 5px 0.75rem;
+}
+.prodView .specVTable .etLabel {
+  color: #4b4b4b;
+}
+.prodView .specVTable .etLabel:after {
+  content: ':';
+  display: inline-block;
+}
+.prodView .descVTable {
+  margin: 0;
+  line-height: 22px;
+}
+.prodView .descVTable tr {
+  min-height: 1.3rem;
+}
+.prodView .descVTable tr input,
+.prodView .descVTable tr span {
+  min-height: 1.3rem;
+  padding: 5px 2px 5px 0.75rem;
+}
+.prodView .specTitle {
+  text-align: center;
+  font-size: .8rem;
+  color: #4b4b4b;
+  margin-top: 30px;
+  font-weight: 700;
+  clear: both;
+  padding: 0 10px;
+  position: relative;
+}
+.prodView .specTitle div {
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  padding: 0 32px;
+}
+.prodView .specTitle div:before {
+  content: '';
+  width: 25px;
+  height: 1px;
+  position: absolute;
+  top: 12px;
+  left: 1px;
+  background: #b8b8b8;
+}
+.prodView .specTitle div:after {
+  content: '';
+  width: 25px;
+  height: 1px;
+  position: absolute;
+  top: 12px;
+  right: 1px;
+  background: #b8b8b8;
+}
+.prodView .prodInfo {
+  text-align: left;
+  color: #878787;
+  font-size: .6rem;
+  padding: 8px 15px;
+}
+.prodView .prodInfo .prodPrice {
+  margin-top: 10px;
+  height: 25px;
+  line-height: 25px;
+}
+.prodView .prodInfo .prodPrice .price {
+  color: #ff4d45;
+  font-size: 1.2rem;
+}
+.prodView .prodInfo .prodPrice .price span {
+  font-size: .9rem;
+  padding-right: 1px;
+}
+.prodView .prodInfo .prodPrice .pack {
+  color: #626262;
+  font-size: .7rem;
+}
+.prodView .prodInfo .prodPrice .listPrice {
+  text-decoration: line-through;
+}
+.prodView .prodInfo .prodShip {
+  margin-top: 0px;
+  height: 24px;
+  line-height: 24px;
+  color: #4c4440;
+}
+.prodView .prodInfo .prodShip .prodEnsure {
+  border-radius: 3px;
+  background-color: #ff2741;
+  color: #fff;
+  margin-left: 10px;
+  line-height: 1;
+  padding: 1px 5px;
+}
+.orderPrice {
+  color: #ff4d45;
+}
+.orderPrice span {
+  font-size: .7rem;
+  padding-right: 1px;
+}
+.weui_cell .cell_label {
+  color: #828282;
+}
+.weui_cell .cell_info {
+  color: #4b4b4b;
+}
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+  width: 100%;
+  height: 66.66666667vw;
+  margin: 0 auto;
+}
+.swipe .swipe-wrap {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+.swipe .swipe-wrap > div {
+  float: left;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+}

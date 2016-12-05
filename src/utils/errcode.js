@@ -11,7 +11,7 @@ const MESSAGES = {
   500: 'Server Internal'
 };
 
-export default class StatusError extends Error {
+export default class ErrCode extends Error {
   constructor(code, message) {
     super(message || MESSAGES[code]);
     this.code = code;
